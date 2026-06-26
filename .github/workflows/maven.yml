@@ -22,3 +22,11 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
+
+      - name: Build and Push Docker Image
+        uses: mr-smithers-excellent/docker-build-push@v4
+        with:
+          image: siddhantsid17/testcicd
+          registry: docker.io
+          username: ${{secretes.DOCKER_USERNAME}}
+          password: ${{secretes.DOCKER_PASSWORD}}
